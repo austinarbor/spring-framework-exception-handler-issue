@@ -1,0 +1,52 @@
+####################
+# IntelliJ
+####################
+*.iml
+out/
+# Allow run configurations/codestyles / required plugins but not the rest of the .idea folder
+.idea/*
+!.idea/runConfigurations
+!.idea/codeStyles
+!.idea/externalDependencies.xml
+!.idea/saveactions_settings.xml
+
+####################
+# Maven
+####################
+target/
+dependency-reduced-pom.xml
+
+####################
+# Gradle
+####################
+bin/
+build/
+.gradle
+
+####################
+# Binaries
+####################
+*.jar
+# Allow gradle-wrapper.jar
+!gradle-wrapper.jar
+*.ear
+*.war
+*.class
+
+####################
+# JVM Errors
+####################
+hs_err_pid*
+
+####################
+# OSX
+####################
+.DS_Store
+
+####################
+# Eclipse
+####################
+.settings/
+.metadata
+.classpath
+.project

@@ -1,0 +1,56 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.4.1'
+    id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+    id 'io.freefair.lombok' version '5.0.1'
+}
+apply plugin: 'java'
+apply plugin: 'io.freefair.lombok'
+
+ext {
+    mockitoVersion = '3.6.28'
+    junitVersion = '5.6.3'
+}
+
+ext['junit-jupiter.version'] = "${junitVersion}"
+ext['mockito.version'] = "${mockitoVersion}"
+
+group 'dev.aga'
+version '1.0.0-SNAPSHOT'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+    options.compilerArgs << '-parameters'
+}
+
+repositories {
+    mavenCentral()
+}
+
+test {
+    useJUnitPlatform()
+}
+
+dependencies {
+    implementation("org.springframework.boot:spring-boot-starter-web") {
+        exclude module: "spring-boot-starter-tomcat"
+    }
+    implementation "org.springframework.boot:spring-boot-starter-undertow"
+    implementation "ch.qos.logback:logback-classic"
+    implementation "com.fasterxml.jackson.core:jackson-databind"
+
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+
+    testImplementation "org.junit.jupiter:junit-jupiter"
+    testImplementation "org.mockito:mockito-core:${mockitoVersion}"
+    testImplementation "org.mockito:mockito-junit-jupiter:${mockitoVersion}"
+    testImplementation "org.junit.jupiter:junit-jupiter-api"
+    testImplementation("org.springframework.boot:spring-boot-starter-test") {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+}
