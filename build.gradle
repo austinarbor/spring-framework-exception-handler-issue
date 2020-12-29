@@ -52,5 +52,9 @@ dependencies {
     testImplementation "org.junit.jupiter:junit-jupiter-api"
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+        // excluding spring-test here and import 5.3.1 resolves the test
+        // exclude module: "spring-test"
     }
+
+    //testImplementation "org.springframework:spring-test:5.3.1"
 }
