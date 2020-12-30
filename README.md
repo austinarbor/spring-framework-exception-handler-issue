@@ -2,5 +2,5 @@
 
 ## Notes
 
-- Works in 2.4.0
-- Does not work in 2.4.1
+- Works in spring-framework 5.3.1
+- Does not work in 5.3.2
